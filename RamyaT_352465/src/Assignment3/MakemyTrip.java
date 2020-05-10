@@ -66,20 +66,6 @@ public class MakemyTrip extends BaseImplementation {
 	             }
 	         }
 	         
-	        driver.findElement(By.xpath(obj.getProperty("SearchButton"))).click();
-	        String pricesort1= driver.findElement(By.xpath(obj.getProperty("upwardsort"))).getText();
-	        String pricesort2= driver.findElement(By.xpath(obj.getProperty("returnsort"))).getText();
-	        Assert.assertTrue(((pricesort1.contains("Price"))&&pricesort2.contains("Price")));
-	       
-	        driver.findElement(By.xpath(obj.getProperty("Viewfare"))).click();
-	        driver.findElement(By.xpath(obj.getProperty("BookButton"))).click();
-	        driver.findElement(By.xpath(obj.getProperty("continuebookingbutton"))).click();
-	        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-	        System.out.println("No. of tabs: " + tabs.size());
-	        if(tabs.size()>1)
-	            System.out.println("review page is opened!");
-	        else
-	            System.out.println("review page is not opened!");
-	        driver.close();
+	        
 	}
 		}
