@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 public class Task4 extends BaseImplementation{
 
-	@Test
+	@Test(groups= {"mandatory","Assignment1"})
     public void test4() throws IOException {
         Task4 ob=new Task4();
         Properties obj=ob.ReadObjectRepo();

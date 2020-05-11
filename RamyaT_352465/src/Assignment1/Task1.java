@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 public class Task1 extends BaseImplementation{
-    @Test
+    @Test(groups= {"mandatory","Assignment1"})
     public void test1() throws IOException {
         Task1 ob=new Task1();
         Properties obj=ob.ReadObjectRepo();

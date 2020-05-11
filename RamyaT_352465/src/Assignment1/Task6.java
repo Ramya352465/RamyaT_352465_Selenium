@@ -13,10 +13,9 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Task6 extends BaseImplementation {
-	    
-	    @Test
-	    //@Parameters({ "sUsername", "sPassword" })
+public class Task6 extends BaseImplementation
+   {
+	    @Test(groups= {"mandatory","Assignment1"})
 	    public void test6() throws IOException {
 	    Task6 ob=new Task6();
 	    Properties obj=ob.ReadObjectRepo();

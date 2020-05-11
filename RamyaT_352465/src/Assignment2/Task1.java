@@ -2,26 +2,19 @@ package Assignment2;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
- 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
- 
-
 import Assignment1.BaseImplementation;
-
- 
 
 public class Task1 extends BaseImplementation{
     WebDriver driver=null;
+    
     @DataProvider(name = "RegisterandLoginData")     
       public static Object[][] credentials() {     
-           return new Object[][] { { "ramya14@gmail.com","Qwerty@1","Qwerty@1","11","5","1992"}};
+           return new Object[][] { { "ramya18@gmail.com","Qwerty@1","Qwerty@1","11","5","1992"}};
     }
     @Test(dataProvider="RegisterandLoginData",priority=0)
     public void test1(String email,String pass,String confirmpass,String day,String month,String year) throws IOException, InterruptedException {
@@ -37,8 +30,8 @@ public class Task1 extends BaseImplementation{
         ob.signoutOlay(driver);
         ob.signinOlay(email, pass, driver);
         ob.signoutOlay(driver);
-    
     }
+    
     else if(ob.ReadCountry().getProperty("country").equalsIgnoreCase("Germany"))
     {
         driver.get("https://www.olaz.de/de-de");
@@ -51,6 +44,7 @@ public class Task1 extends BaseImplementation{
         ob.signinOlay(Email, Pass, driver);
         ob.signoutOlay(driver);
     }
+    
     else if(ob.ReadCountry().getProperty("country").equalsIgnoreCase("Spain")) 
     {
         driver.get("https://www.olay.es/es-es");
@@ -63,9 +57,11 @@ public class Task1 extends BaseImplementation{
         ob.signinOlay(Email, Pass, driver);
         ob.signoutOlay(driver);
     }
+    
     else
         System.out.println("Enter valid country, allowed countries are UK, Germany, Spain");
     }
+    
     @DataProvider(name = "LoginDetails")     
       public static Object[][] Details() {     
            return new Object[][] { { "ramya1@gmail.com","Qwerty@1"},{ "ramya1@gmail.com","Qwerty@2"}};

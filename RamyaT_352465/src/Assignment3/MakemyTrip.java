@@ -6,9 +6,11 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import Assignment1.BaseImplementation;
@@ -16,7 +18,7 @@ import Assignment1.BaseImplementation;
 
 public class MakemyTrip extends BaseImplementation {
 	
-		@Test
+	@Test(groups= {"mandatory","Assignmen3"})
 	    public void test1() throws IOException, InterruptedException {
 	    MakemyTrip ob=new MakemyTrip();
 	    Properties obj=ob.ReadObjectRepo();
@@ -65,7 +67,27 @@ public class MakemyTrip extends BaseImplementation {
 	                 break;
 	             }
 	         }
-	         
+	         driver.findElement(By.xpath(obj.getProperty("SearchButton"))).click();
+	         String pricesort1= driver.findElement(By.xpath(obj.getProperty("upwardsort"))).getText();
+		     String pricesort2= driver.findElement(By.xpath(obj.getProperty("returnsort"))).getText();
+		     Assert.assertTrue(((pricesort1.contains("Price"))&&pricesort2.contains("Price")));
+		     try
+		     {
+		     driver.findElement(By.xpath(obj.getProperty("Viewfare"))).click();
+		     }
+		     catch(ElementClickInterceptedException e)
+		     {
+		     driver.findElement(By.xpath(obj.getProperty("Viewfare"))).click();  
+		     }
+		     driver.findElement(By.xpath(obj.getProperty("BookButton"))).click();
+		     driver.findElement(By.xpath(obj.getProperty("continuebookingbutton"))).click();
+		     ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		     System.out.println("No. of tabs: " + tabs.size());
+		     if(tabs.size()>1)
+		     System.out.println("review page is opened!");
+		     else
+		     System.out.println("review page is not opened!");
+		     driver.quit();   
 	        
 	}
-		}
+}

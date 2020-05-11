@@ -13,7 +13,7 @@ import org.openqa.selenium.WebElement;
 
 
 public class Task5 extends BaseImplementation{
-    @Test
+	@Test(groups= {"mandatory","Assignment1"})
     public void test5() throws IOException {
         Task5 ob=new Task5();
         Properties obj=ob.ReadObjectRepo();
