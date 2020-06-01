@@ -12,14 +12,16 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import com.relevantcodes.extentreports.LogStatus;
 
 import Assignment1.BaseImplementation;
 
 
 public class MakemyTrip extends BaseImplementation {
-	
-	@Test(groups= {"mandatory","Assignmen3"})
+	    
+	    @Test(groups= {"mandatory","Assignmen3"})
 	    public void test1() throws IOException, InterruptedException {
+	    logger = extent.startTest("Assignment3_test1");	    
 	    MakemyTrip ob=new MakemyTrip();
 	    Properties obj=ob.ReadObjectRepo();
 	    WebDriver driver=ob.driver();
@@ -88,6 +90,7 @@ public class MakemyTrip extends BaseImplementation {
 		     else
 		     System.out.println("review page is not opened!");
 		     driver.quit();   
+		     logger.log(LogStatus.PASS, "test case passed");
 	        
 	}
 }

@@ -6,10 +6,9 @@
 <include name="mandatory"/>
 </run>
 </groups>
-  <test thread-count="1" name="Test" parallel="methods">
+  <test thread-count="2" name="Test" parallel="methods">
     <classes>
-      <class name="Assignment3.MakemyTrip"/>
-      <class name="Assignment1.Task3"/>
+      <class name="Assignment3.MakemyTrip"/><class name="Assignment1.Task3"/>
       <class name="Assignment1.Task4"/>
       <class name="Assignment1.Task1"/>
       <class name="Assignment1.Task2"/>

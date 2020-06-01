@@ -1,14 +1,19 @@
 package Assignment1;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,11 +21,78 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+import org.apache.commons.io.FileUtils;
 
 import au.com.bytecode.opencsv.CSVReader;
 
 public class BaseImplementation {
-	
+
+    public static ExtentReports extent;
+    public static ExtentTest logger;
+    public static WebDriver driver = null;
+    //for extent report generation    
+    @BeforeSuite
+    public void setUp() {
+        
+        String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+        extent = new ExtentReports(System.getProperty("user.dir") + "\\ExtentOutput\\Extentreports.html", true);
+        extent.addSystemInfo("Host Name", "Ramya").addSystemInfo("Environment", "Automation Testing")
+                .addSystemInfo("User Name", "Ramya");
+        extent.loadConfig(new File(System.getProperty("user.dir") + "\\src\\ExtentReports\\extent-config.xml"));
+    }
+    
+    @AfterMethod
+    public void getResult(ITestResult result) throws IOException, Exception {
+        logger.log(LogStatus.INFO, "checking whether test is passed or not, if test is failed attaching the screenshot");
+        if (result.getStatus() == ITestResult.FAILURE) {
+        logger.log(LogStatus.FAIL, "Testcase failed is: " + result.getName());
+        logger.log(LogStatus.FAIL, "Testcase failed is: " + result.getThrowable());
+        // To capture screenshot path and store the path of the screenshot in the string
+        // "screenshotPath"
+        // We do pass the path captured by this method in to the extent reports using
+        // "logger.addScreenCapture" method.
+        String screenshotPath = BaseImplementation.getScreenshot(driver, result.getName());
+        // To add it in the extent report
+        logger.log(LogStatus.FAIL, logger.addScreenCapture(screenshotPath));
+        } else if (result.getStatus() == ITestResult.SKIP) {
+        logger.log(LogStatus.SKIP, "testcase skipped is: " + result.getName());
+
+        }
+    }
+
+ 
+
+    @AfterSuite
+    public void testReport() {
+        logger.log(LogStatus.INFO, "flushing entire extent data");
+        extent.flush();
+    }
+    
+	public static String getScreenshot(WebDriver driver, String screenshotName) throws Exception {
+        // below line is just to append the date format with the screenshot name to
+        // avoid duplicate names
+        logger.log(LogStatus.INFO, "taking screenshot");
+        String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File source = ts.getScreenshotAs(OutputType.FILE);
+        // after execution, you could see a folder "FailedTestsScreenshots" under src
+        // folder
+        String destination = System.getProperty("user.dir") + "\\FailedTestsScreenshots\\" + screenshotName + dateName
+                + ".png";
+        File finalDestination = new File(destination);
+        FileUtils.copyFile(source, finalDestination);
+        return destination;
+    }
+    
+    
 	public WebDriver driver() throws IOException
 	{
 		WebDriver driver = null;

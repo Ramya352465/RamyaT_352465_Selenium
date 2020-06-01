@@ -7,6 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import com.relevantcodes.extentreports.LogStatus;
+
 import Assignment1.BaseImplementation;
 
 public class Task1 extends BaseImplementation{
@@ -14,10 +17,11 @@ public class Task1 extends BaseImplementation{
     
     @DataProvider(name = "RegisterandLoginData")     
       public static Object[][] credentials() {     
-           return new Object[][] { { "ramya18@gmail.com","Qwerty@1","Qwerty@1","11","5","1992"}};
+           return new Object[][] { { "ramya28@gmail.com","Qwerty@1","Qwerty@1","11","5","1992"}};
     }
     @Test(dataProvider="RegisterandLoginData",priority=0)
     public void test1(String email,String pass,String confirmpass,String day,String month,String year) throws IOException, InterruptedException {
+    logger = extent.startTest("Assignment2_test1");	  
     Task1 ob=new Task1();
     Properties obj=ob.ReadObjectRepo();
     driver=ob.driver();
@@ -60,7 +64,9 @@ public class Task1 extends BaseImplementation{
     
     else
         System.out.println("Enter valid country, allowed countries are UK, Germany, Spain");
+        logger.log(LogStatus.PASS, "test case passed");
     }
+    
     
     @DataProvider(name = "LoginDetails")     
       public static Object[][] Details() {     
@@ -69,7 +75,8 @@ public class Task1 extends BaseImplementation{
     @Test(dataProvider="LoginDetails",priority=2)
     public void signinvalidation(String email,String pass) throws IOException
     {   
-        Task1 ob=new Task1();
+    	logger = extent.startTest("Assignment2_test2");	
+    	Task1 ob=new Task1();
         driver.get("https://www.olay.co.uk/en-gb");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
@@ -77,13 +84,15 @@ public class Task1 extends BaseImplementation{
         driver.findElement(By.xpath(ob.ReadObjectRepo().getProperty("signinemail"))).sendKeys(email);
         driver.findElement(By.xpath(ob.ReadObjectRepo().getProperty("signinpassword"))).sendKeys(pass);
         driver.findElement(By.xpath(ob.ReadObjectRepo().getProperty("signinsubmit"))).click();
-        
+        logger.log(LogStatus.PASS, "test case passed");
     }   
     
       @AfterTest 
       public void driverclose()
       { 
           driver.close();
+          
+	        
       }
     
 
