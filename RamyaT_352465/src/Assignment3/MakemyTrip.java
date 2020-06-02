@@ -21,7 +21,7 @@ public class MakemyTrip extends BaseImplementation {
 	    
 	    @Test(groups= {"mandatory","Assignmen3"})
 	    public void test1() throws IOException, InterruptedException {
-	    logger = extent.startTest("Assignment3_test1");	    
+	    //logger = extent.startTest("Assignment3_test1");	    
 	    MakemyTrip ob=new MakemyTrip();
 	    Properties obj=ob.ReadObjectRepo();
 	    WebDriver driver=ob.driver();
@@ -90,7 +90,7 @@ public class MakemyTrip extends BaseImplementation {
 		     else
 		     System.out.println("review page is not opened!");
 		     driver.quit();   
-		     logger.log(LogStatus.PASS, "test case passed");
+		     //logger.log(LogStatus.PASS, "test case passed");
 	        
 	}
 }
