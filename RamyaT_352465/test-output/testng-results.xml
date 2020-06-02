@@ -2,55 +2,42 @@
 <testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="9577" started-at="2020-05-31T12:19:50 IST" finished-at="2020-05-31T12:19:59 IST">
+  <suite name="Default suite" duration-ms="223" started-at="2020-06-02T11:55:49 IST" finished-at="2020-06-02T11:55:49 IST">
     <groups>
       <group name="Assignment1">
-        <method signature="Task1.test1()[pri:0, instance:Assignment1.Task1@6e6c3152]" name="test1" class="Assignment1.Task1"/>
+        <method signature="Task1.test1()[pri:0, instance:Assignment1.Task1@614ddd49]" name="test1" class="Assignment1.Task1"/>
       </group> <!-- Assignment1 -->
       <group name="mandatory">
-        <method signature="Task1.test1()[pri:0, instance:Assignment1.Task1@6e6c3152]" name="test1" class="Assignment1.Task1"/>
+        <method signature="Task1.test1()[pri:0, instance:Assignment1.Task1@614ddd49]" name="test1" class="Assignment1.Task1"/>
       </group> <!-- mandatory -->
     </groups>
-    <test name="Default test" duration-ms="9577" started-at="2020-05-31T12:19:50 IST" finished-at="2020-05-31T12:19:59 IST">
+    <test name="Default test" duration-ms="223" started-at="2020-06-02T11:55:49 IST" finished-at="2020-06-02T11:55:49 IST">
       <class name="Assignment1.Task1">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:Assignment1.Task1@6e6c3152]" name="setUp" is-config="true" duration-ms="137" started-at="2020-05-31T12:19:50 IST" finished-at="2020-05-31T12:19:50 IST">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:Assignment1.Task1@614ddd49]" name="setUp" is-config="true" duration-ms="208" started-at="2020-06-02T11:55:48 IST" finished-at="2020-06-02T11:55:49 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="test1()[pri:0, instance:Assignment1.Task1@6e6c3152]" name="test1" duration-ms="9536" started-at="2020-05-31T12:19:50 IST" finished-at="2020-05-31T12:19:59 IST">
-          <exception class="org.openqa.selenium.NoSuchWindowException">
+        <test-method status="FAIL" signature="test1()[pri:0, instance:Assignment1.Task1@614ddd49]" name="test1" duration-ms="161" started-at="2020-06-02T11:55:49 IST" finished-at="2020-06-02T11:55:49 IST">
+          <exception class="org.openqa.selenium.WebDriverException">
             <message>
-              <![CDATA[no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=81.0.4044.138)
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
-System info: host: 'DESKTOP-8514C0N', ip: '192.168.43.233', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.138, chrome: {chromedriverVersion: 81.0.4044.69 (6813546031a4b..., userDataDir: C:\Users\NITHYA~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:56161}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 553f3fde67991cd809a60fe138828f6b]]>
+              <![CDATA[Cannot find firefox binary in PATH. Make sure firefox is installed. OS appears to be: WIN10
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-GDK7FHU', ip: '192.168.1.104', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'
+Driver info: driver.version: FirefoxDriver]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=81.0.4044.138)
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
-System info: host: 'DESKTOP-8514C0N', ip: '192.168.43.233', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.138, chrome: {chromedriverVersion: 81.0.4044.69 (6813546031a4b..., userDataDir: C:\Users\NITHYA~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:56161}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 553f3fde67991cd809a60fe138828f6b
-at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-at java.lang.reflect.Constructor.newInstance(Unknown Source)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)
-at org.openqa.selenium.remote.RemoteWebDriver.close(RemoteWebDriver.java:442)
-at Assignment1.Task1.test1(Task1.java:31)
+              <![CDATA[org.openqa.selenium.WebDriverException: Cannot find firefox binary in PATH. Make sure firefox is installed. OS appears to be: WIN10
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-GDK7FHU', ip: '192.168.1.104', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'
+Driver info: driver.version: FirefoxDriver
+at org.openqa.selenium.firefox.FirefoxBinary.<init>(FirefoxBinary.java:100)
+at java.util.Optional.orElseGet(Unknown Source)
+at org.openqa.selenium.firefox.FirefoxOptions.getBinary(FirefoxOptions.java:216)
+at org.openqa.selenium.firefox.FirefoxDriver.toExecutor(FirefoxDriver.java:187)
+at org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:147)
+at org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:125)
+at Assignment1.BaseImplementation.driver(BaseImplementation.java:110)
+at Assignment1.Task1.test1(Task1.java:18)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -81,22 +68,22 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
+          </exception> <!-- org.openqa.selenium.WebDriverException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test1 -->
-        <test-method status="FAIL" signature="getResult(org.testng.ITestResult)[pri:0, instance:Assignment1.Task1@6e6c3152]" name="getResult" is-config="true" duration-ms="3" started-at="2020-05-31T12:19:59 IST" finished-at="2020-05-31T12:19:59 IST">
+        <test-method status="FAIL" signature="getResult(org.testng.ITestResult)[pri:0, instance:Assignment1.Task1@614ddd49]" name="getResult" is-config="true" duration-ms="5" started-at="2020-06-02T11:55:49 IST" finished-at="2020-06-02T11:55:49 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=test1 status=FAILURE method=Task1.test1()[pri:0, instance:Assignment1.Task1@6e6c3152] output={null}]]]>
+                <![CDATA[[TestResult name=test1 status=FAILURE method=Task1.test1()[pri:0, instance:Assignment1.Task1@614ddd49] output={null}]]]>
               </value>
             </param>
           </params>
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
-at Assignment1.BaseImplementation.getResult(BaseImplementation.java:54)
+at Assignment1.BaseImplementation.getResult(BaseImplementation.java:57)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -136,11 +123,11 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="FAIL" signature="testReport()[pri:0, instance:Assignment1.Task1@6e6c3152]" name="testReport" is-config="true" duration-ms="0" started-at="2020-05-31T12:19:59 IST" finished-at="2020-05-31T12:19:59 IST">
+        <test-method status="FAIL" signature="testReport()[pri:0, instance:Assignment1.Task1@614ddd49]" name="testReport" is-config="true" duration-ms="1" started-at="2020-06-02T11:55:49 IST" finished-at="2020-06-02T11:55:49 IST">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
-at Assignment1.BaseImplementation.testReport(BaseImplementation.java:75)
+at Assignment1.BaseImplementation.testReport(BaseImplementation.java:78)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
