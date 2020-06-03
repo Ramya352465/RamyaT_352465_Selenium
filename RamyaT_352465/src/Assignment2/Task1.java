@@ -17,7 +17,7 @@ public class Task1 extends BaseImplementation{
     
     @DataProvider(name = "RegisterandLoginData")     
       public static Object[][] credentials() {     
-           return new Object[][] { { "ramya28@gmail.com","Qwerty@1","Qwerty@1","11","5","1992"}};
+           return new Object[][] { { "ramya30@gmail.com","Qwerty@1","Qwerty@1","11","5","1992"}};
     }
     @Test(dataProvider="RegisterandLoginData",priority=0)
     public void test1(String email,String pass,String confirmpass,String day,String month,String year) throws IOException, InterruptedException {
@@ -64,7 +64,7 @@ public class Task1 extends BaseImplementation{
     
     else
         System.out.println("Enter valid country, allowed countries are UK, Germany, Spain");
-        logger.log(LogStatus.PASS, "test case passed");
+       // logger.log(LogStatus.PASS, "test case passed");
     }
     
     
@@ -75,7 +75,7 @@ public class Task1 extends BaseImplementation{
     @Test(dataProvider="LoginDetails",priority=2)
     public void signinvalidation(String email,String pass) throws IOException
     {   
-    	logger = extent.startTest("Assignment2_test2");	
+    	//logger = extent.startTest("Assignment2_test2");	
     	Task1 ob=new Task1();
         driver.get("https://www.olay.co.uk/en-gb");
         driver.manage().window().maximize();
@@ -84,7 +84,7 @@ public class Task1 extends BaseImplementation{
         driver.findElement(By.xpath(ob.ReadObjectRepo().getProperty("signinemail"))).sendKeys(email);
         driver.findElement(By.xpath(ob.ReadObjectRepo().getProperty("signinpassword"))).sendKeys(pass);
         driver.findElement(By.xpath(ob.ReadObjectRepo().getProperty("signinsubmit"))).click();
-        logger.log(LogStatus.PASS, "test case passed");
+       logger.log(LogStatus.PASS, "test case passed");
     }   
     
       @AfterTest 

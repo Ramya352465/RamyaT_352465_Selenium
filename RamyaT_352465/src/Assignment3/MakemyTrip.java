@@ -21,7 +21,7 @@ public class MakemyTrip extends BaseImplementation {
 	    
 	    @Test(groups= {"mandatory","Assignmen3"})
 	    public void test1() throws IOException, InterruptedException {
-	    //logger = extent.startTest("Assignment3_test1");	    
+	    logger = extent.startTest("Assignment3_test1");	    
 	    MakemyTrip ob=new MakemyTrip();
 	    Properties obj=ob.ReadObjectRepo();
 	    WebDriver driver=ob.driver();
@@ -38,7 +38,7 @@ public class MakemyTrip extends BaseImplementation {
 	    driver.findElement(By.xpath(obj.getProperty("SelectDate"))).click();
 	    String DepartDate="5";
 	    String ReturnDate="10";
-	    String DepartMonth="June2020";
+	    String DepartMonth="July2020";
 	    while(true)
 	        {
 	        String month=driver.findElement(By.xpath(obj.getProperty("SelectDate"))).getText();
@@ -76,13 +76,17 @@ public class MakemyTrip extends BaseImplementation {
 		     try
 		     {
 		     driver.findElement(By.xpath(obj.getProperty("Viewfare"))).click();
+		     //driver.findElement(By.xpath(obj.getProperty("BookButton"))).click();
+		     //driver.findElement(By.xpath(obj.getProperty("continuebookingbutton"))).click();
 		     }
 		     catch(ElementClickInterceptedException e)
 		     {
-		     driver.findElement(By.xpath(obj.getProperty("Viewfare"))).click();  
+		     driver.findElement(By.xpath(obj.getProperty("Viewfare"))).click(); 
+		     //driver.findElement(By.xpath(obj.getProperty("BookButton"))).click();
+		    // driver.findElement(By.xpath(obj.getProperty("continuebookingbutton"))).click();
 		     }
-		     driver.findElement(By.xpath(obj.getProperty("BookButton"))).click();
-		     driver.findElement(By.xpath(obj.getProperty("continuebookingbutton"))).click();
+		     jsclick(driver,"BookButton");
+		     jsclick(driver,"continuebookingbutton");
 		     ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		     System.out.println("No. of tabs: " + tabs.size());
 		     if(tabs.size()>1)
@@ -90,7 +94,7 @@ public class MakemyTrip extends BaseImplementation {
 		     else
 		     System.out.println("review page is not opened!");
 		     driver.quit();   
-		     //logger.log(LogStatus.PASS, "test case passed");
+		     logger.log(LogStatus.PASS, "test case passed");
 	        
 	}
 }

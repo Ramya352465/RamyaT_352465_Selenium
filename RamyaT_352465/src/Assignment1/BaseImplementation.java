@@ -61,10 +61,10 @@ public class BaseImplementation {
         // To capture screenshot path and store the path of the screenshot in the string
         // "screenshotPath"
         // We do pass the path captured by this method in to the extent reports using
-        // "logger.addScreenCapture" method.
-        String screenshotPath = BaseImplementation.getScreenshot(driver, result.getName());
+         //"logger.addScreenCapture" method.
+        //String screenshotPath = BaseImplementation.getScreenshot(driver, result.getName());
         // To add it in the extent report
-        logger.log(LogStatus.FAIL, logger.addScreenCapture(screenshotPath));
+        //logger.log(LogStatus.FAIL, logger.addScreenCapture(screenshotPath));
         } else if (result.getStatus() == ITestResult.SKIP) {
         logger.log(LogStatus.SKIP, "testcase skipped is: " + result.getName());
 
@@ -79,7 +79,7 @@ public class BaseImplementation {
         extent.flush();
     }
     
-	public static String getScreenshot(WebDriver driver, String screenshotName) throws Exception {
+	/*public static String getScreenshot(WebDriver driver, String screenshotName) throws Exception {
         // below line is just to append the date format with the screenshot name to
         // avoid duplicate names
         logger.log(LogStatus.INFO, "taking screenshot");
@@ -93,7 +93,7 @@ public class BaseImplementation {
         File finalDestination = new File(destination);
         FileUtils.copyFile(source, finalDestination);
         return destination;
-    }
+    }*/
     
     
 	public WebDriver driver() throws IOException
@@ -101,13 +101,19 @@ public class BaseImplementation {
 		WebDriver driver = null;
 		if(ReadBrowserProp().getProperty("browser").equalsIgnoreCase("chrome"))
 		{
-			System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Selenium\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Selenium\\chrome\\chromedriver.exe");
 			driver=new ChromeDriver();
 		}
 		else if(ReadBrowserProp().getProperty("browser").equalsIgnoreCase("firefox"))
 		{
-			System.setProperty("webdriver.gecko.driver", "C:\\Program Files\\Selenium\\GeckoDriver.exe");
+			try {
+			System.setProperty("webdriver.gecko.driver", "C:\\Program Files\\Selenium\\firefox\\GeckoDriver.exe");
 			driver=new FirefoxDriver();
+			}
+			catch(Exception e){
+				System.setProperty("webdriver.gecko.driver", "C:\\Program Files\\Selenium\\firefox\\GeckoDriver.exe");
+				driver=new FirefoxDriver();	
+			}
 		}
 		return driver;
 	}
