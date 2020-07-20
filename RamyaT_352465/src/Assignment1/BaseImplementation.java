@@ -2,10 +2,13 @@ package Assignment1;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -31,8 +34,16 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 import au.com.bytecode.opencsv.CSVReader;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 
 
@@ -41,6 +52,11 @@ public class BaseImplementation {
     public static ExtentReports extent;
     public static ExtentTest logger;
     public static WebDriver driver = null;
+    
+    public static HashMap<String, String> TestData = new HashMap<String, String>();
+	public static JSONObject jsonObject;
+	static String strFileDir = System.getProperty("user.dir");
+	
     //for extent report generation    
     @BeforeSuite
     public void setUp() {
@@ -293,5 +309,79 @@ public class BaseImplementation {
 		 obj.load(objfile);
 		 return obj;
 	 }
+	 
+	 public static void loadTestData() {
+	        System.out.println("Load the TestData in HashMap");
+	        //Reading TestData Using POI API
+	        try {
+	    		FileInputStream inputStream = new FileInputStream(strFileDir +"/src/test/resources/Resources/TestData.xlsx");
+	    	    Workbook bookData = new XSSFWorkbook(inputStream);
+	    	    Sheet bookSheet = bookData.getSheet("Env_Data");
+	    	    int totalRows = bookSheet.getPhysicalNumberOfRows();
+	    	    for (int i=0; i<totalRows; i++) {
+	    	        Row row = bookSheet.getRow(i);
+	    	        TestData.put(row.getCell(0).getStringCellValue(), row.getCell(1).getStringCellValue());
+	    	        //System.out.println(TestData.get(row.getCell(0).getStringCellValue()));
+	    	     }
+	    	    bookData.close();
+	    	    
+	    	    //Read Json File
+	    	     JSONParser parser = new JSONParser();
+	    	     Object obj = parser.parse(new FileReader(strFileDir +"/src/test/resources/Resources/Registration.json"));
+		         jsonObject = (JSONObject)obj;
+		         System.out.println("TestData Loaded Successfully");
+	        }
+	        catch(FileNotFoundException e) {
+	        	e.printStackTrace();
+	        } catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 
+	    }
+	    
+	    
+	    public static void launchApplication(WebDriver driver, String strAppURL) {
+	    	 //Launch The App URL
+	    	driver.get(TestData.get(strAppURL));
+	    	System.out.println("Application URL Launched Successfully");
+	    	driver.manage().window().maximize();
+	    	//Delete Cookies
+	    	driver.manage().deleteAllCookies();
+	    	System.out.println("Site Cookies Deleted Successfully");
+	    	//Launch The App URL
+	    	driver.get(TestData.get(strAppURL));
+	    	System.out.println("Application URL Launched Successfully");
+		   }
+		  
+	    
+	    public static String getElementLocator(String key) {
+	    	
+	    	String locator = null;
+	    	try {
+	    		Properties prop = new Properties();
+				InputStream inputStream = new FileInputStream(strFileDir +"/src/ObjectRepository/ObjectRepository.properties");
+				prop.load(inputStream);
+				locator = prop.getProperty(key);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return locator;
+	    	
+	    }
+	   
+	    public String getEmailId() {
+			
+			return "register"+System.currentTimeMillis()+"@gmail.com";
+		}
+
+		
 
 }

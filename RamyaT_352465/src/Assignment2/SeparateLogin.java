@@ -12,18 +12,17 @@ import com.relevantcodes.extentreports.LogStatus;
 
 import Assignment1.BaseImplementation;
 
-public class Task1 extends BaseImplementation{
+public class SeparateLogin extends BaseImplementation{
     WebDriver driver=null;
     
     @DataProvider(name = "RegisterandLoginData")     
       public static Object[][] credentials() {     
-           return new Object[][] { { "ramya30@gmail.com","Qwerty@1","Qwerty@1","11","5","1992"}};
+           return new Object[][] { { "ramya32@gmail.com","Qwerty@1","Qwerty@1","23","1","1995"}};
     }
     @Test(dataProvider="RegisterandLoginData",priority=0)
     public void test1(String email,String pass,String confirmpass,String day,String month,String year) throws IOException, InterruptedException {
     logger = extent.startTest("Assignment2_test1");	  
-    Task1 ob=new Task1();
-    Properties obj=ob.ReadObjectRepo();
+    SeparateLogin ob=new SeparateLogin();
     driver=ob.driver();
     if(ob.ReadCountry().getProperty("country").equalsIgnoreCase("UK"))
     {
@@ -76,7 +75,7 @@ public class Task1 extends BaseImplementation{
     public void signinvalidation(String email,String pass) throws IOException
     {   
     	//logger = extent.startTest("Assignment2_test2");	
-    	Task1 ob=new Task1();
+    	SeparateLogin ob=new SeparateLogin();
         driver.get("https://www.olay.co.uk/en-gb");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);

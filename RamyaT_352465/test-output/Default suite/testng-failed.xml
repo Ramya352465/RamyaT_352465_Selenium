@@ -3,14 +3,15 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Assignment1.Task1">
+      <class name="Assignment2.SameLogin">
         <methods>
+          <include name="olayWebsiteRegistrationLogin"/>
           <include name="getResult"/>
           <include name="testReport"/>
-          <include name="test1"/>
+          <include name="setUpDriver"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- Assignment1.Task1 -->
+      </class> <!-- Assignment2.SameLogin -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

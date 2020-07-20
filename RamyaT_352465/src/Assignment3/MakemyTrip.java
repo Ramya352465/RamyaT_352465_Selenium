@@ -10,7 +10,6 @@ import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -38,7 +37,7 @@ public class MakemyTrip extends BaseImplementation {
 	    driver.findElement(By.xpath(obj.getProperty("SelectDate"))).click();
 	    String DepartDate="5";
 	    String ReturnDate="10";
-	    String DepartMonth="July2020";
+	    String DepartMonth="August2020";
 	    while(true)
 	        {
 	        String month=driver.findElement(By.xpath(obj.getProperty("SelectDate"))).getText();
@@ -65,9 +64,9 @@ public class MakemyTrip extends BaseImplementation {
 	         for(WebElement e:date)
 	         {
 	             if(e.getText().contains(ReturnDate)) {
-	                 e.click();
-	                 break;
-	             }
+	                e.click();
+	                break;
+	            }
 	         }
 	         driver.findElement(By.xpath(obj.getProperty("SearchButton"))).click();
 	         String pricesort1= driver.findElement(By.xpath(obj.getProperty("upwardsort"))).getText();
@@ -76,14 +75,10 @@ public class MakemyTrip extends BaseImplementation {
 		     try
 		     {
 		     driver.findElement(By.xpath(obj.getProperty("Viewfare"))).click();
-		     //driver.findElement(By.xpath(obj.getProperty("BookButton"))).click();
-		     //driver.findElement(By.xpath(obj.getProperty("continuebookingbutton"))).click();
 		     }
 		     catch(ElementClickInterceptedException e)
 		     {
 		     driver.findElement(By.xpath(obj.getProperty("Viewfare"))).click(); 
-		     //driver.findElement(By.xpath(obj.getProperty("BookButton"))).click();
-		    // driver.findElement(By.xpath(obj.getProperty("continuebookingbutton"))).click();
 		     }
 		     jsclick(driver,"BookButton");
 		     jsclick(driver,"continuebookingbutton");
