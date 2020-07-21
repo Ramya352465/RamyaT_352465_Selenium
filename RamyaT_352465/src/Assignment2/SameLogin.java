@@ -104,54 +104,12 @@ public class SameLogin extends BaseImplementation {
 		driver.findElement(By.xpath(getElementLocator("SignInSuccessUK"))).isDisplayed();
 		
 		
-		//ChinaSite
-		driver.findElement(By.xpath(getElementLocator("ClickLanguageUK"))).click();
-		driver.findElement(By.xpath(getElementLocator("LocationOpened"))).isDisplayed();
-		driver.findElement(By.xpath(getElementLocator("ClickChinaWebSite"))).click();
-		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-		driver.switchTo().window(tabs.get(1));
-		 
-		if(!driver.findElement(By.xpath(getElementLocator("OlayHomePageUK"))).isDisplayed())
-			Assert.fail("Olay China Home Page is Not Opened");
-	   
-		driver.findElement(By.xpath(getElementLocator("ClickRegChina"))).click();
-		TimeUnit.SECONDS.sleep(10L);
-		
-		if(!driver.findElement(By.xpath(getElementLocator("RegPageChina"))).isDisplayed())
-			Assert.fail("Olay China Register Page is Not Opened");
-		//Enter Email Id
-		strEmailId = getEmailId();
-		driver.findElement(By.xpath(getElementLocator("FirstNameOlay"))).sendKeys(TestData.get("FirstNameChina"));
-		driver.findElement(By.xpath(getElementLocator("LastNameOlay"))).sendKeys(TestData.get("LastNameChina"));
-		driver.findElement(By.xpath(getElementLocator("EmailFieldOlay"))).sendKeys(strEmailId);
-		driver.findElement(By.xpath(getElementLocator("PasswordOlay"))).sendKeys(TestData.get("ChinaPassword"));
-		driver.findElement(By.xpath(getElementLocator("ConfmPasswordOlay"))).sendKeys(TestData.get("ChinaPassword"));
-		phoneNumber = String.valueOf(System.currentTimeMillis());
-		phoneNumber = "+86" + phoneNumber.substring(0, 8);
-		driver.findElement(By.xpath(getElementLocator("ChinaMobileInput"))).sendKeys(phoneNumber);
-		driver.findElement(By.xpath(getElementLocator("ChinaAddressInput"))).sendKeys(TestData.get("ChinaAddress"));
-		
-		select = new Select(driver.findElement(By.xpath(getElementLocator("BirthMonthChina"))));
-		select.selectByValue(TestData.get("BirthMonthChina"));
-		select = new Select(driver.findElement(By.xpath(getElementLocator("BirthYearChina"))));
-		select.selectByValue(TestData.get("BirthYearChina"));
-		
-		driver.findElement(By.xpath(getElementLocator("AgreeConditionChina"))).click();
-		driver.findElement(By.xpath(getElementLocator("CreateProfileOlay"))).click();
-		TimeUnit.SECONDS.sleep(10L);
-		
-		if(!driver.findElement(By.xpath(getElementLocator("SignInPageChina"))).isDisplayed())
-			Assert.fail("Olay China SignIn Page is Not Opened");
-		
-		loginOlay(strEmailId, TestData.get("ChinaPassword"));
-		
-		driver.findElement(By.xpath(getElementLocator("SignInSuccessChina"))).isDisplayed();
 		
 		//Navigate To Germany Website
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.close();
 		driver.switchTo().window(tabs.get(0));
 		driver.findElement(By.xpath(getElementLocator("ClickGermanySite"))).click();
-		tabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(1));
 		
 		if(!driver.findElement(By.xpath(getElementLocator("OlayHPGermany"))).isDisplayed())

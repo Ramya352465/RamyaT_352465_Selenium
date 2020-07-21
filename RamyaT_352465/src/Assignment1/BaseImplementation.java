@@ -68,7 +68,7 @@ public class BaseImplementation {
         extent.loadConfig(new File(System.getProperty("user.dir") + "\\src\\ExtentReports\\extent-config.xml"));
     }
     
-    @AfterMethod
+    /*@AfterMethod
     public void getResult(ITestResult result) throws IOException, Exception {
         logger.log(LogStatus.INFO, "checking whether test is passed or not, if test is failed attaching the screenshot");
         if (result.getStatus() == ITestResult.FAILURE) {
@@ -85,7 +85,7 @@ public class BaseImplementation {
         logger.log(LogStatus.SKIP, "testcase skipped is: " + result.getName());
 
         }
-    }
+    }*/
 
  
 
